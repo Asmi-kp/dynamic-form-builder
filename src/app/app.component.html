@@ -1,0 +1,50 @@
+<h3 fxLayoutAlign="center">Dynamic Form builder<br></h3> <p>U can change default json and update to get the form.<br>
+  <i>Currently implemented textbox, checkbox and button. Validation not implemented</i></p>
+<div fxLayout="row" style="padding: 5px">
+  <div fxFlex="40%" fxLayoutAlign="center center">
+    <div class="card">
+      <div class="card-body">
+        <app-dynamic-form-builder [fields]="getFields()"></app-dynamic-form-builder>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="form-group" [formGroup]="form" fxFlex="60%">
+    <label style="padding:10px;">JSON</label>
+    <br>
+    <div fxLayout="row" style="padding:10px;">
+      <textarea style="width: 600px;height:200px;" formControlName="fields" class="form-control"></textarea>
+    </div>
+    <div fxLayout="row" style="padding:10px;">
+      <button style="padding: 5px;" id="updateDropdownConfigButton" (click)="updateConfig()">Update</button>
+    </div>
+  </div>
+</div>
+
+<h3 style="text-align:center;">Dynamic Table builder<br>
+</h3>
+<div style="padding: 5px">  
+  <div>    
+    <p>U can change default json and update to get the table.<br>      
+      <i>Currently implemented textbox, checkbox and button. U can add or delete rows.</i>
+    </p>  
+  </div>  
+  <div>    
+    <div>      
+      <table style="padding:5px;">        
+        <tr *ngFor="let n of rownoArray">          
+          <td *ngFor="let field of fields">
+            <input [attr.type]="field.type" [value]="field.name" [id]="field.name" [name]="field.name" [placeholder]="field.name">          
+          </td>        
+        </tr>      
+      </table>    
+    </div>    
+    <span style="padding:5px;">      
+      <button (click)="addRow()" type="button" class="btn btn-primary">Add Row</button>    
+    </span>    
+    <span style="padding:5px;">      
+      <button (click)="deleteRow()" type="button" class="btn btn-primary">Delete Row</button>    
+    </span>  
+  </div>
+</div>

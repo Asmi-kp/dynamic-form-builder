@@ -1,0 +1,7 @@
+<div class="form-group row" [formGroup]="form">    
+    <div [ngSwitch]="field.type">      
+        <textbox *ngSwitchCase="'text'" [field]="field" [form]="form"></textbox>      
+        <checkbox *ngSwitchCase="'checkbox'" [field]="field" [form]="form"></checkbox>      
+        <app-button *ngSwitchCase="'button'" [field]="field" [form]="form"></app-button>    
+    </div>
+</div>
